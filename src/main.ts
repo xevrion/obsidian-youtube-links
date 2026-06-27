@@ -29,9 +29,10 @@ async function fetchVideoInfo(url: string): Promise<OEmbedResponse | null> {
 	}
 }
 
-function buildLinkText(info: OEmbedResponse, format: PluginSettings['linkFormat']): string {
-	if (format === 'title-only') return info.title;
-	return `${info.author_name}: ${info.title}`;
+function buildLink(info: OEmbedResponse, format: PluginSettings['linkFormat'], url: string): string {
+	if (format === 'embed') return `![${info.author_name}: ${info.title}](${url})`;
+	const text = format === 'title-only' ? info.title : `${info.author_name}: ${info.title}`;
+	return `[${text}](${url})`;
 }
 
 export default class YouTubeLinkPlugin extends Plugin {
@@ -79,14 +80,12 @@ export default class YouTubeLinkPlugin extends Plugin {
 			ch: placeholderStart.ch + placeholder.length,
 		};
 
+		const normalized = normalizeUrl(url);
 		if (info) {
-			const displayText = buildLinkText(info, this.settings.linkFormat);
-			const normalized = normalizeUrl(url);
-			const finalLink = `[${displayText}](${normalized})`;
+			const finalLink = buildLink(info, this.settings.linkFormat, normalized);
 			editor.replaceRange(finalLink, placeholderStart, endCursor);
 			editor.setCursor({ line: placeholderStart.line, ch: placeholderStart.ch + finalLink.length });
 		} else {
-			const normalized = normalizeUrl(url);
 			const fallback = `[${normalized}](${normalized})`;
 			editor.replaceRange(fallback, placeholderStart, endCursor);
 			editor.setCursor({ line: placeholderStart.line, ch: placeholderStart.ch + fallback.length });

@@ -3,7 +3,7 @@ import YouTubeLinkPlugin from './main';
 
 export interface PluginSettings {
 	showLoadingText: boolean;
-	linkFormat: 'channel-title' | 'title-only';
+	linkFormat: 'channel-title' | 'title-only' | 'embed';
 }
 
 export const DEFAULT_SETTINGS: PluginSettings = {
@@ -42,6 +42,7 @@ export class SettingsTab extends PluginSettingTab {
 				dropdown
 					.addOption('channel-title', 'Channel: Video Title')
 					.addOption('title-only', 'Video Title only')
+					.addOption('embed', 'Embed video')
 					.setValue(this.plugin.settings.linkFormat)
 					.onChange(async (value) => {
 						this.plugin.settings.linkFormat = value as PluginSettings['linkFormat'];
