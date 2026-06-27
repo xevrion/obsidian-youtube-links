@@ -1,7 +1,7 @@
 {
 	"id": "youtube-links",
 	"name": "YouTube Links",
-	"version": "1.6.0",
+	"version": "1.7.0",
 	"minAppVersion": "1.4.0",
 	"description": "Paste YouTube links and they automatically expand into a readable link with the channel name and video title.",
 	"author": "Yash Bavadiya",
