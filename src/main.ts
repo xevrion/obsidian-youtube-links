@@ -55,6 +55,7 @@ export default class YouTubeLinkPlugin extends Plugin {
 				const cursor = editor.getCursor();
 				const placeholder = this.settings.showLoadingText ? `[Loading...](${url})` : url;
 				editor.replaceRange(placeholder, cursor);
+				editor.setCursor({ line: cursor.line, ch: cursor.ch + placeholder.length });
 
 				this.fetchAndReplace(editor, cursor, placeholder, url);
 			}),
@@ -80,11 +81,14 @@ export default class YouTubeLinkPlugin extends Plugin {
 		if (info) {
 			const displayText = buildLinkText(info, this.settings.linkFormat);
 			const normalized = normalizeUrl(url);
-			editor.replaceRange(`[${displayText}](${normalized})`, placeholderStart, endCursor);
+			const finalLink = `[${displayText}](${normalized})`;
+			editor.replaceRange(finalLink, placeholderStart, endCursor);
+			editor.setCursor({ line: placeholderStart.line, ch: placeholderStart.ch + finalLink.length });
 		} else {
 			const normalized = normalizeUrl(url);
 			const fallback = `[${normalized}](${normalized})`;
 			editor.replaceRange(fallback, placeholderStart, endCursor);
+			editor.setCursor({ line: placeholderStart.line, ch: placeholderStart.ch + fallback.length });
 		}
 	}
 
