@@ -6,5 +6,9 @@
 	"description": "Paste YouTube links and they automatically expand into a readable link with the channel name and video title.",
 	"author": "Yash Bavadiya",
 	"authorUrl": "https://github.com/xevrion",
-	"isDesktopOnly": false
+	"isDesktopOnly": false,
+	"fundingUrl": {
+		"Ko-fi": "https://ko-fi.com/xevrion",
+		"GitHub Sponsors": "https://github.com/sponsors/xevrion"
+	}
 }
