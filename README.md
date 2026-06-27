@@ -26,7 +26,7 @@ No API key needed. Works with regular links, short links, and Shorts.
 
 Open Settings > YouTube Links to configure:
 
-- **Link format** - show `Channel: Video Title` or just the video title
+- **Link format** - choose between `Channel: Video Title`, video title only, or embed the video inline
 - **Show loading text** - show `Loading...` as a placeholder while the title is being fetched
 
 ## Installation
