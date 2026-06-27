@@ -1,0 +1,10 @@
+{
+	"id": "youtube-link-enhanced",
+	"name": "YouTube Link Enhanced",
+	"version": "1.0.0",
+	"minAppVersion": "1.4.0",
+	"description": "Paste YouTube links and they automatically expand into 'Channel: Video Title' format, just like Notion.",
+	"author": "Yash Bavadiya",
+	"authorUrl": "https://github.com/xevrion",
+	"isDesktopOnly": false
+}
