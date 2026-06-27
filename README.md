@@ -1,4 +1,4 @@
-# YouTube Link Enhanced
+# YouTube Links
 
 Paste a YouTube URL into any note and it instantly becomes a clean, readable link showing the channel name and video title, just like Notion does it.
 
@@ -26,11 +26,11 @@ Open Settings > YouTube Link Enhanced to configure:
 
 ## Installation
 
-Search for **YouTube Link Enhanced** in Settings > Community plugins > Browse.
+Search for **YouTube Links** in Settings > Community plugins > Browse.
 
 ### Manual
 
-1. Download `main.js` and `manifest.json` from the [latest release](https://github.com/xevrion/youtube-link-enhanced/releases/latest)
+1. Download `main.js` and `manifest.json` from the [latest release](https://github.com/xevrion/obsidian-youtube-links/releases/latest)
 2. Create a folder `.obsidian/plugins/youtube-link-enhanced/` in your vault
 3. Copy both files into that folder
 4. Enable the plugin in Settings > Community plugins

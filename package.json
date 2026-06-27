@@ -1,5 +1,5 @@
 {
-	"name": "youtube-link-enhanced",
+	"name": "obsidian-youtube-links",
 	"version": "1.1.0",
 	"description": "Paste YouTube links and they expand into 'Channel: Video Title' format",
 	"main": "main.js",
