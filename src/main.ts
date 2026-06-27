@@ -1,7 +1,7 @@
 import { Editor, Plugin, requestUrl } from 'obsidian';
 import { DEFAULT_SETTINGS, PluginSettings, SettingsTab } from './settings';
 
-const YOUTUBE_REGEX = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})(?:[^\s]*)?/;
+const YOUTUBE_REGEX = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})(?:[^\s]*)?/;
 
 interface OEmbedResponse {
 	title: string;
