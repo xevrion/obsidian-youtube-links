@@ -1,4 +1,4 @@
-import { Editor, Plugin, requestUrl } from 'obsidian';
+import { Editor, MarkdownFileInfo, MarkdownView, Plugin, requestUrl } from 'obsidian';
 import { DEFAULT_SETTINGS, PluginSettings, SettingsTab } from './settings';
 
 const YOUTUBE_REGEX = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})(?:[^\s]*)?/;
@@ -41,9 +41,10 @@ export default class YouTubeLinkPlugin extends Plugin {
 		await this.loadSettings();
 		this.addSettingTab(new SettingsTab(this.app, this));
 
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		this.registerEvent(
-			(this.app.workspace as any).on('editor-paste', (evt: ClipboardEvent, editor: Editor) => {
+			this.app.workspace.on('editor-paste', (evt: ClipboardEvent, editor: Editor, _info: MarkdownView | MarkdownFileInfo) => {
+				if (evt.defaultPrevented) return;
+
 				const text = evt.clipboardData?.getData('text/plain')?.trim();
 				if (!text) return;
 
@@ -57,7 +58,7 @@ export default class YouTubeLinkPlugin extends Plugin {
 				editor.replaceRange(placeholder, cursor);
 				editor.setCursor({ line: cursor.line, ch: cursor.ch + placeholder.length });
 
-				this.fetchAndReplace(editor, cursor, placeholder, url);
+				void this.fetchAndReplace(editor, cursor, placeholder, url);
 			}),
 		);
 	}
