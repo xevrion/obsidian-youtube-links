@@ -25,7 +25,7 @@ export class SettingsTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName('Show loading text')
-			.setDesc('Show "Loading..." while fetching video info after paste.')
+			.setDesc('Show "Loading..." as a placeholder while fetching video info.')
 			.addToggle((toggle) =>
 				toggle
 					.setValue(this.plugin.settings.showLoadingText)
@@ -37,7 +37,7 @@ export class SettingsTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName('Link format')
-			.setDesc('How the pasted link should be displayed.')
+			.setDesc('How the link is displayed after pasting.')
 			.addDropdown((dropdown) =>
 				dropdown
 					.addOption('channel-title', 'Channel: Video Title')
